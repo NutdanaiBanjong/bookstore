@@ -36,7 +36,7 @@ const addCart = (bookFromCart) => {
       cart[newbook].amount = cart[newbook].amount + 1 
     }
     setPrice (price + bookFromCart.value)
-    console.log(price,'ราคา')
+    // console.log(price,'ราคา')
     // console.log(cart,'cart')
   }
   return (
