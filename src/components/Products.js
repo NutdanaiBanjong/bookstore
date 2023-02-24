@@ -1,8 +1,7 @@
 
-const Promotion =({cartToChild,priceToChild})=>{
-  // console.log(test,'test')
-    return (
-    <div>
+const Card = ({bookData, addCart , cartToChild , priceToChild}) => {
+  return (
+    <div className="sm:px-52 bg-blue-200 pt-3">
       <div className="rounded-lg shadow-md bg-white">
         <div className="grid grid-cols-3 ">
           <div className=" px-4 py-2 col-span-2">
@@ -17,7 +16,7 @@ const Promotion =({cartToChild,priceToChild})=>{
               <li>ซื้อเล่มไม่ซํ้ากัน7เล่ม ลด 60% ของทั้ง7เล่ม</li>
             </ul>
           </div>
-          <div className="px-4 py-2 ">
+          <div className="px-4 py-2 relative">
             <h1 className="text-2xl">Cart</h1> <hr className="border border-black my-2"/>
             {cartToChild.map(cartToChild => {
               return (
@@ -29,12 +28,35 @@ const Promotion =({cartToChild,priceToChild})=>{
                 </div>
               );
               })}
-                <p className="flex justify-end">ราคา {priceToChild} THB</p> 
+                <p className="flex justify-end absolute bottom-2 right-5">ราคา {priceToChild} THB</p> 
                 </div>
             </div>    
         </div>
+    <div>
+      <h1 className="text-5xl mt-5 mb-1">All Harry Potter Novels</h1> <hr className="border border-black mb-5"/>
+      <div className="grid sm:grid-cols-4 grid-cols-2 gap-4">
+      {
+        bookData.map((bookFromCart) => {
+          return (
+            <div key={bookFromCart.id}>
+              <div className="bg-white rounded-lg flex flex-col pb-2">
+                <img src={bookFromCart.image} className="w-full h-full" alt=""/>
+                <div className='text-base'>
+                  <p className='text-center'>{bookFromCart.name}</p> <hr/>
+                  <p className='text-end mr-3'>{bookFromCart.value} THB</p>
+                </div>
+                <div className="flex justify-center">
+                  <button onClick={() => addCart(bookFromCart)} className="bg-orange-500 rounded-lg px-2">Add to cart</button>
+                </div>  
+              </div> 
+            </div>
+          )
+        })
+      }
+      </div>
     </div>
-    )
+    </div>
+  )
 }
 
-export default Promotion;
+export default Card;
