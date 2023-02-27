@@ -1,5 +1,5 @@
 
-const Card = ({bookData, addCart , cartToChild , priceToChild}) => {
+function Card ({bookData, addCart , cartToChild , priceToChild}){
   return (
     <div className="sm:px-52 bg-blue-200 pt-3">
       <div className="rounded-lg shadow-md bg-white">
